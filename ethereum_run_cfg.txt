@@ -1,0 +1,18 @@
+//node 1
+geth --datadir node1 --networkid 258 --nat extip:192.168.1.141 --port 25896 --rpc --rpcaddr 192.168.1.141 --rpcapi "eth,web3,personal,net,miner,admin,debug" console
+
+//attach 1
+geth attach http://192.168.1.141:8646
+
+//node 2
+geth --datadir node2 --networkid 258 --nat extip:192.168.1.141 --port 25874 --rpc --rpcaddr 192.168.1.141 --rpcport 8546 --ipcdisable console
+
+//node 3
+geth --datadir node3 --networkid 258 --nat extip:192.168.1.126 --port 25897 --rpc --rpcaddr 192.168.1.126 --ipcdisable --bootnodes "enode://b01e6cdf27b8237a89fea10d940e44a96c5b1bdef2967a5af8de21d8dda8f560668efd14e6ffef1d0d7d1bb4a092fd9a1e855305298d441b07d1b4d4235c0da6@192.168.1.141:25896" console
+
+//attach 2
+geth attach http://192.168.1.126:8647
+
+
+//enqueed transaction
+txpool
